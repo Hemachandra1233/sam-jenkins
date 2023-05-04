@@ -16,6 +16,13 @@ pipeline {
         }
       }
     }
+    stage('sam-cli') {
+      steps {
+        container('npm'){
+          sh 'sam --version'
+        }
+      }
+    }
       
    
     
