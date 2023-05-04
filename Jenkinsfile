@@ -24,24 +24,16 @@ pipeline {
     }
 	  
     stage('Build') {
-      steps {
-	container('python') {      
-	  unstash 'venv'
-	  sh 'venv/bin/sam build'
-	  stash includes: '**/.aws-sam/**/*', name: 'aws-sam'
-        }
-      }
-    }
-    
-    stage('beta') {
       environment {
         STACK_NAME = 'sam-app-beta-stage'
         S3_BUCKET = 'sam-jenkins-demo-ap-south-1-jenkins'
       }
       steps {
-	container('python'){
+	container('python') {
 	  withAWS(credentials: 'sam-jenkins-example', region: 'ap-south-1') {
             unstash 'venv'
+	    sh 'venv/bin/sam build'
+	    stash includes: '**/.aws-sam/**/*', name: 'aws-sam'
             unstash 'aws-sam'
             sh 'venv/bin/sam deploy --stack-name $STACK_NAME -t template.yaml --s3-bucket $S3_BUCKET --capabilities CAPABILITY_IAM'
             dir ('hello-world') {
@@ -49,9 +41,10 @@ pipeline {
               sh 'npm run integ-test'
             }
           }
-	} 
+        }
       }
-    }	  
+    }
+    
 	  
 	  
 	  
