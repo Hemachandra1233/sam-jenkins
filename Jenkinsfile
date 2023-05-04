@@ -7,9 +7,12 @@ pipeline {
     
     stage('Install sam-cli') {
       steps {
-        sh 'sam --version'
+        container('npm'){
+          sh 'sam --version'
+        }
       }
     }
+      
    
     
     
