@@ -8,4 +8,6 @@ spec:
     image: amazon/aws-sam-cli-build-image-provided
     command:
     - cat
+    - apt-get update
+    - apt-get install -y nodejs npm
     tty: true
