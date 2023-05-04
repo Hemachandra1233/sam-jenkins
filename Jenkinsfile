@@ -39,7 +39,7 @@ pipeline {
         S3_BUCKET = 'sam-jenkins-demo-ap-south-1-jenkins'
       }
       steps {
-	container('npm'){
+	container('python'){
 	  withAWS(credentials: 'sam-jenkins-example', region: 'ap-south-1') {
             unstash 'venv'
             unstash 'aws-sam'
