@@ -10,7 +10,7 @@ spec:
     - cat
     tty: true
   - name: python
-    image: python
+    image: nikolaik/python-nodejs
     command:
     - /bin/cat
     tty: true    
