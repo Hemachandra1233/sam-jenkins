@@ -2,7 +2,7 @@ pipeline {
 
   agent {
     kubernetes {
-      yamlFile 'agent.yaml'
+      yamlFile 'agent.yml'
     }
   }
   environment {
