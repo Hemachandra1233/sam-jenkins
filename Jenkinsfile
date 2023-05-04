@@ -16,10 +16,13 @@ pipeline {
         }
       }
     }
-    stage('sam-cli') {
+    
+    
+    stage('Build') {
       steps {
-        container('npm'){
-          sh 'sam --version'
+        container('npm') {
+          sh 'sam build'
+          stash includes: '**/.aws-sam/**/*', name: 'aws-sam'
         }
       }
     }
