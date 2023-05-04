@@ -1,0 +1,9 @@
+version = 0.1
+[hema.deploy.parameters]
+stack_name = "jenkins-example"
+resolve_s3 = true
+s3_prefix = "jenkins-example"
+region = "ap-south-1"
+capabilities = "CAPABILITY_IAM"
+disable_rollback = true
+image_repositories = []

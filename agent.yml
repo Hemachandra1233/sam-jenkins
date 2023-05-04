@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kaniko
+spec:
+  containers:
+  - name: npm
+    image: node:16
+    command:
+    - cat
+    tty: true
+  - name: python
+    image: python
+    command:
+    - /bin/cat
+    tty: true    
