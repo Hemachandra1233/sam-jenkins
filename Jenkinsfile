@@ -1,5 +1,9 @@
 pipeline {
-  agent any
+  agent {
+    kubernetes {
+      yamlFile 'agent.yml'
+    }
+  }
  
   stages {
     
