@@ -10,8 +10,6 @@ spec:
     - sh
     - -c
     - |
-      apk update
-      apk add nodejs npm
-      node -v
-      npm -v
+      apt-get update
+      apt-get install -y nodejs npm
     tty: true
