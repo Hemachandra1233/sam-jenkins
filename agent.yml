@@ -7,7 +7,11 @@ spec:
   - name: npm
     image: amazon/aws-sam-cli-build-image-provided
     command:
-    - cat
-    - apt-get update
-    - apt-get install -y nodejs npm
+    - sh
+    - -c
+    - |
+      apk update
+      apk add nodejs npm
+      node -v
+      npm -v
     tty: true
