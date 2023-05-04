@@ -5,7 +5,7 @@ metadata:
 spec:
   containers:
   - name: npm
-    image: node:16
+    image: amazon/aws-sam-cli-build-image-provided
     command:
     - cat
     tty: true
