@@ -1,15 +1,11 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: kaniko
+  name: sam
 spec:
   containers:
   - name: npm
-    image: amazon/aws-sam-cli-build-image-provided
+    image: amazon/aws-sam-cli-build-image-nodejs12.x
     command:
-    - sh
-    - -c
-    - |
-      apt-get update
-      apt-get install -y nodejs npm
+    - cat
     tty: true
