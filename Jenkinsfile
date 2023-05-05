@@ -22,7 +22,6 @@ pipeline {
       steps {
         container('npm') {
           sh 'sam build'
-          stash includes: '**/.aws-sam/**/*', name: 'aws-sam'
         }
       }
     }
@@ -34,7 +33,7 @@ pipeline {
       }
       steps {
         withAWS(credentials: 'sam-jenkins-example', region: 'ap-south-1') {
-          unstash 'aws-sam'
+          
           sh 'sam deploy --stack-name $STACK_NAME -t template.yaml --s3-bucket $S3_BUCKET --capabilities CAPABILITY_IAM'
         }
       }
