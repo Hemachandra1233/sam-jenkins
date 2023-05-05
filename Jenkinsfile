@@ -32,10 +32,13 @@ pipeline {
         S3_BUCKET = 'sam-jenkins-demo-ap-south-1-jenkins2'
       }
       steps {
-        withAWS(credentials: 'sam-jenkins-example', region: 'ap-south-1') {
+        container('npm'){
+           withAWS(credentials: 'sam-jenkins-example', region: 'ap-south-1') {
           
           sh 'sam deploy --stack-name $STACK_NAME -t template.yaml --s3-bucket $S3_BUCKET --capabilities CAPABILITY_IAM'
         }
+        }
+       
       }
     }
       
